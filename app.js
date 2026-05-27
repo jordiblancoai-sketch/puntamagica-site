@@ -281,26 +281,16 @@
 
     const openBooking = (e) => {
       e.preventDefault();
-      bookingFrame.src = bookingUrl;
-      bookingModal.removeAttribute('hidden');
-      document.body.style.overflow = 'hidden';
-      bookingClose.focus();
-    };
-
-    const closeBooking = () => {
-      bookingModal.setAttribute('hidden', '');
-      document.body.style.overflow = '';
-      bookingFrame.src = '';
+      const w = Math.min(1020, Math.round(screen.availWidth * 0.88));
+      const h = Math.min(820, Math.round(screen.availHeight * 0.88));
+      const left = Math.round((screen.availWidth - w) / 2);
+      const top = Math.round((screen.availHeight - h) / 2);
+      window.open(bookingUrl, 'pm_booking',
+        `width=${w},height=${h},left=${left},top=${top},resizable=yes,scrollbars=yes`);
     };
 
     document.querySelectorAll('a[href*="direct-book.com"]').forEach((a) => {
       a.addEventListener('click', openBooking);
-    });
-
-    bookingOverlay.addEventListener('click', closeBooking);
-    bookingClose.addEventListener('click', closeBooking);
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !bookingModal.hasAttribute('hidden')) closeBooking();
     });
   }
 })();
