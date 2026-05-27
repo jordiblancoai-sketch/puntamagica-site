@@ -262,4 +262,45 @@
     else if ((navigator.language || '').toLowerCase().startsWith('en')) initialLang = 'en';
   } catch (e) { /* private mode */ }
   setLang(initialLang);
+
+  // ---- Booking modal ----
+  const bookingModal = document.getElementById('bookingModal');
+  const bookingFrame = document.getElementById('bookingFrame');
+  if (bookingModal && bookingFrame) {
+    const bookingOverlay = bookingModal.querySelector('.booking-modal-overlay');
+    const bookingClose = bookingModal.querySelector('.booking-modal-close');
+
+    const fmtDate = (d) => d.toISOString().slice(0, 10);
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const bookingUrl =
+      'https://direct-book.com/properties/puntamagica?locale=en&referrer=canvas' +
+      '&items[0][adults]=2&items[0][children]=0&items[0][infants]=0&currency=MXN&trackPage=no' +
+      '&checkInDate=' + fmtDate(today) + '&checkOutDate=' + fmtDate(tomorrow);
+
+    const openBooking = (e) => {
+      e.preventDefault();
+      bookingFrame.src = bookingUrl;
+      bookingModal.removeAttribute('hidden');
+      document.body.style.overflow = 'hidden';
+      bookingClose.focus();
+    };
+
+    const closeBooking = () => {
+      bookingModal.setAttribute('hidden', '');
+      document.body.style.overflow = '';
+      bookingFrame.src = '';
+    };
+
+    document.querySelectorAll('a[href*="direct-book.com"]').forEach((a) => {
+      a.addEventListener('click', openBooking);
+    });
+
+    bookingOverlay.addEventListener('click', closeBooking);
+    bookingClose.addEventListener('click', closeBooking);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !bookingModal.hasAttribute('hidden')) closeBooking();
+    });
+  }
 })();
