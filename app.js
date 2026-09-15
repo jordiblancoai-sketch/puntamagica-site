@@ -7,14 +7,14 @@
   const META = {
     es: {
       title: 'Punta Mágica · Alojamiento y bienestar en Puerto Escondido, Oaxaca',
-      description: 'Villas boutique con espacio privado y alberca en Puerto Escondido. Diseño minimalista, sombra y palmeras. Reserva directo.',
+      description: 'Habitaciones boutique con espacio privado y alberca en Puerto Escondido. Diseño minimalista, sombra y palmeras. Reserva directo.',
       waBook: 'Hola Punta Mágica, quisiera consultar fechas y reservar.',
       waDates: 'Hola Punta Mágica, quisiera consultar fechas.',
       waWellness: 'Hola Punta Mágica, me interesa saber más sobre bienestar.',
     },
     en: {
       title: 'Punta Mágica · Boutique stays & wellness in Puerto Escondido, Oaxaca',
-      description: 'Boutique villas with private space and pool in Puerto Escondido. Minimalist design, shade, and palm trees. Book direct.',
+      description: 'Boutique rooms with private space and pool in Puerto Escondido. Minimalist design, shade, and palm trees. Book direct.',
       waBook: 'Hi Punta Mágica, I would like to check dates and book.',
       waDates: 'Hi Punta Mágica, I would like to check dates.',
       waWellness: 'Hi Punta Mágica, I would like to know more about wellness.',
